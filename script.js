@@ -1,6 +1,8 @@
-questions = [];
-questionsCards = [null,null,null,null,null,null,null,null,null,null];
-questionCurrent = 0;
+let questions;
+const questionsCards = [null,null,null,null,null,null,null,null,null,null];
+let questionCurrent = 0;
+let score = 0;
+
 
 async function monJSONParser(url) {
     try{
@@ -31,7 +33,7 @@ function createHeader(){
 function createNav(){
     const nav = document.createElement("nav");
     nav.setAttribute('id','nav');
-    //nav.style.backgroundColor = "red";
+    nav.setAttribute('class','mx-6')
 
     document.body.appendChild(nav);
 
@@ -41,11 +43,10 @@ function createNav(){
     for(let i=0; i<10; i++){
         const navItem = document.createElement("li");
         navItem.setAttribute('id',`navItem${i}`);
-        navItem.setAttribute('class','flex-1');
+        navItem.setAttribute('class','flex-1 skew-x-[45deg] bg-[#a8a29e] hover:bg-[#fbbf24]');
         navItem.setAttribute('onclick',`getQuestion(${i})`);
 
         navItem.style.listStyle = "none";
-        navItem.style.backgroundColor = "gray";
         navItem.style.width = "10%";
         navItem.style.height = "50px"
 
@@ -58,8 +59,7 @@ function createNav(){
 function createMain(){
     const main = document.createElement("main");
     main.setAttribute('id','main');
-    main.setAttribute('class','h-72 mt-24')
-    main.style.backgroundColor = "green";
+    main.setAttribute('class','h-72 mt-24');
 
     document.body.appendChild(main);
 }
@@ -77,7 +77,7 @@ async function initApp(){
 
 // fonctions relative a la creation et l'affichage des questions
 function getQuestion(i){
-    console.log("Question "+i+": "+questions[i]["question"]);
+    console.log("Question "+(i+1)+": "+questions[i]["question"]);
     if(questionsCards[i] === null){
         createCard(i);
     }else{
@@ -89,30 +89,47 @@ function createCard(i){
     // Informations relatives a la question
     const num = questions[i]["number"] +1;
     const intitule = questions[i]["question"];
-    const reponses1 = questions[i]["reponses"][0];
-    const reponses2 = questions[i]["reponses"][1];
-    const reponses3 = questions[i]["reponses"][2];
-    const reponses4 = questions[i]["reponses"][3];
 
     const card = document.createElement('section');
+    card.setAttribute('class','size-3/5 text-2xl mx-auto p-2.5 bg-[#9ca3af] rounded-xl');
     const cardNum = document.createElement('h1');
+    cardNum.setAttribute('class','text-center');
     cardNum.innerHTML = num;
     const cardQuestion = document.createElement('h3');
     cardQuestion.innerHTML = intitule;
     const reponsesContainer = document.createElement('div');
-    const rep1 = document.createElement('p');
-    rep1.innerHTML = reponses1;
-    const rep2 = document.createElement('p');
-    rep2.innerHTML = reponses2;
-    const rep3 = document.createElement('p');
-    rep3.innerHTML = reponses3;
-    const rep4 = document.createElement('p');
-    rep4.innerHTML = reponses4;
+    reponsesContainer.setAttribute('class','grid grid-cols-2 text-center');
+    
+    // const reponses1 = questions[i]["reponses"][0];
+    // const reponses2 = questions[i]["reponses"][1];
+    // const reponses3 = questions[i]["reponses"][2];
+    // const reponses4 = questions[i]["reponses"][3];
 
-    reponsesContainer.appendChild(rep1);
-    reponsesContainer.appendChild(rep2);
-    reponsesContainer.appendChild(rep3);
-    reponsesContainer.appendChild(rep4);
+    // const rep1 = document.createElement('p');
+    // rep1.innerHTML = reponses1;
+    // const rep2 = document.createElement('p');
+    // rep2.innerHTML = reponses2;
+    // const rep3 = document.createElement('p');
+    // rep3.innerHTML = reponses3;
+    // const rep4 = document.createElement('p');
+    // rep4.innerHTML = reponses4;
+
+    // reponsesContainer.appendChild(rep1);
+    // reponsesContainer.appendChild(rep2);
+    // reponsesContainer.appendChild(rep3);
+    // reponsesContainer.appendChild(rep4);
+
+    questions[i]["reponses"].forEach((element,index) => {
+        const reponse = document.createElement('p');
+        if(questions[i]["reponse"] === element){
+            reponse.setAttribute('valide','vrai');
+        }else{
+            reponse.setAttribute('valide','faux');
+        }
+        reponse.setAttribute('onclick',`verificationReponse(${index})`);
+        reponse.innerHTML = element;
+        reponsesContainer.appendChild(reponse);
+    });
 
     card.appendChild(cardNum);
     card.appendChild(cardQuestion);
@@ -132,6 +149,34 @@ function printCard(i){
     questionCurrent = i;
     questionsCards[i].style.display = 'block';
     // la nouvelle question est affiché
+}
+
+function verificationReponse(i){
+    // On recupère toutes les réponses
+    const reponses = questionsCards[questionCurrent].querySelector('div').querySelectorAll('p');
+    // On enlève l'attribut onclick
+    reponses.forEach(element => {
+        element.removeAttribute('onclick');
+    });
+    // On vérifie si la réponse est correct (affichage vert) ou fausse (affichage rouge)
+    if(questions[questionCurrent]["reponses"][i] === questions[questionCurrent]["reponse"]){
+        //console.log(reponses[i]+" est vrai");
+        reponses[i].style.backgroundColor = "green";
+        document.getElementById(`navItem${questionCurrent}`).style.backgroundColor = "green";
+        score++;
+        console.log("Score : "+score);
+    }else{
+        //console.log(reponses[i]+" est faux");
+        reponses[i].style.backgroundColor = "red";
+        document.getElementById(`navItem${questionCurrent}`).style.backgroundColor = "red";
+        // la bonne réponse est affichée en vert
+        questions[questionCurrent]["reponses"].forEach( (element,index) => {
+            if(element === questions[questionCurrent]["reponse"]){
+                reponses[index].style.backgroundColor = "green";
+            }
+        });
+        console.log("Score : "+score);
+    }
 }
 
 initApp();
