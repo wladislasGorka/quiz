@@ -31,7 +31,7 @@ function createHeader(){
 function createNav(){
     const nav = document.createElement("nav");
     nav.setAttribute('id','nav');
-    //nav.style.backgroundColor = "red";
+    nav.setAttribute('class','mx-6')
 
     document.body.appendChild(nav);
 
@@ -41,11 +41,10 @@ function createNav(){
     for(let i=0; i<10; i++){
         const navItem = document.createElement("li");
         navItem.setAttribute('id',`navItem${i}`);
-        navItem.setAttribute('class','flex-1');
+        navItem.setAttribute('class','flex-1 skew-x-[45deg] bg-[#a8a29e] hover:bg-[#fbbf24]');
         navItem.setAttribute('onclick',`getQuestion(${i})`);
 
         navItem.style.listStyle = "none";
-        navItem.style.backgroundColor = "gray";
         navItem.style.width = "10%";
         navItem.style.height = "50px"
 
@@ -58,8 +57,7 @@ function createNav(){
 function createMain(){
     const main = document.createElement("main");
     main.setAttribute('id','main');
-    main.setAttribute('class','h-72 mt-24')
-    main.style.backgroundColor = "green";
+    main.setAttribute('class','h-72 mt-24');
 
     document.body.appendChild(main);
 }
@@ -95,11 +93,13 @@ function createCard(i){
     const reponses4 = questions[i]["reponses"][3];
 
     const card = document.createElement('section');
+    card.setAttribute('class','size-3/5 text-2xl mx-auto p-2.5 bg-[#9ca3af] rounded-xl');
     const cardNum = document.createElement('h1');
     cardNum.innerHTML = num;
     const cardQuestion = document.createElement('h3');
     cardQuestion.innerHTML = intitule;
     const reponsesContainer = document.createElement('div');
+    reponsesContainer.setAttribute('class','grid grid-cols-2');
     const rep1 = document.createElement('p');
     rep1.innerHTML = reponses1;
     const rep2 = document.createElement('p');
