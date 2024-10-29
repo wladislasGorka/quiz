@@ -1,0 +1,72 @@
+[
+    {
+        "number": 0,
+        "question": "Quelle est la capitale de la France ?",
+        "reponses": ["Paris", "Lyon", "Marseille", "Nice"],
+        "reponse": "Paris",
+        "explication": "Paris est la capitale de la France depuis 508 après J.-C."
+    },
+    {
+        "number": 1,
+        "question": "Quel est le plus grand océan du monde ?",
+        "reponses": ["Océan Atlantique", "Océan Indien", "Océan Arctique", "Océan Pacifique"],
+        "reponse": "Océan Pacifique",
+        "explication": "L'océan Pacifique est le plus grand océan du monde, couvrant plus de 63 millions de miles carrés."
+    },
+    {
+        "number": 2,
+        "question": "Qui a peint la Joconde ?",
+        "reponses": ["Vincent van Gogh", "Pablo Picasso", "Claude Monet", "Léonard de Vinci"],
+        "reponse": "Léonard de Vinci",
+        "explication": "La Joconde, également connue sous le nom de Mona Lisa, a été peinte par Léonard de Vinci au début du 16ème siècle."
+    },
+    {
+        "number": 3,
+        "question": "Quelle est la plus haute montagne du monde ?",
+        "reponses": ["Mont Kilimandjaro", "Mont Everest", "Mont Blanc", "Mont Fuji"],
+        "reponse": "Mont Everest",
+        "explication": "Le Mont Everest est la plus haute montagne du monde, culminant à 8 848 mètres au-dessus du niveau de la mer."
+    },
+    {
+        "number": 4,
+        "question": "Quel est l'élément chimique dont le symbole est O ?",
+        "reponses": ["Or", "Oxygène", "Osmium", "Oganesson"],
+        "reponse": "Oxygène",
+        "explication": "L'oxygène est un élément chimique essentiel à la respiration des êtres vivants."
+    },
+    {
+        "number": 5,
+        "question": "Quelle planète est la plus proche du soleil ?",
+        "reponses": ["Vénus", "Terre", "Mars", "Mercure"],
+        "reponse": "Mercure",
+        "explication": "Mercure est la planète la plus proche du soleil, avec une distance moyenne de 57,9 millions de kilomètres."
+    },
+    {
+        "number": 6,
+        "question": "Qui a écrit 'Les Misérables' ?",
+        "reponses": ["Émile Zola", "Victor Hugo", "Gustave Flaubert", "Honoré de Balzac"],
+        "reponse": "Victor Hugo",
+        "explication": "'Les Misérables' est un roman écrit par Victor Hugo et publié en 1862."
+    },
+    {
+        "number": 7,
+        "question": "Quelle est la langue officielle du Brésil ?",
+        "reponses": ["Espagnol", "Portugais", "Français", "Anglais"],
+        "reponse": "Portugais",
+        "explication": "Le portugais est la langue officielle du Brésil en raison de la colonisation portugaise au 16ème siècle."
+    },
+    {
+        "number": 8,
+        "question": "Quel est le plus long fleuve du monde ?",
+        "reponses": ["Nil", "Amazon", "Yangtsé", "Mississippi"],
+        "reponse": "Amazon",
+        "explication": "Le fleuve Amazone est le plus long fleuve du monde, mesurant environ 7 000 kilomètres."
+    },
+    {
+        "number": 9,
+        "question": "Quelle est la monnaie du Japon ?",
+        "reponses": ["Yuan", "Won", "Yen", "Dollar"],
+        "reponse": "Yen",
+        "explication": "Le yen est la monnaie officielle du Japon depuis 1871."
+    }
+]
